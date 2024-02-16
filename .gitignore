@@ -1,0 +1,42 @@
+# Unity generated files
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+
+# Visual Studio / MonoDevelop / Rider generated files
+.vscode/
+*.sln
+*.csproj
+*.pidb
+*.userprefs
+*.unityproj
+*.suo
+*.sln.DotSettings.user
+/*.user
+/*.userprefs
+/*.csproj
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+
+# Auto-generated Unity meta files
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
+
+# Unity3D generated meta files
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
+
+# Build artifacts
+/[Bb]uilds/
+
+# Unity package files
+*.unitypackage
