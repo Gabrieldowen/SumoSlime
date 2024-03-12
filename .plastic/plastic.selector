@@ -1,0 +1,4 @@
+repository "sumoSlime@gabe8pizza@cloud"
+  path "/"
+    smartbranch "/main"    
+     
