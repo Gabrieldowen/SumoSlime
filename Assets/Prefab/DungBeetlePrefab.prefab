@@ -230,7 +230,7 @@ GameObject:
   - component: {fileID: 5141763300492903448}
   - component: {fileID: 6988416478108355435}
   m_Layer: 0
-  m_Name: DungBeetleCharacter
+  m_Name: DungBeetlePrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
