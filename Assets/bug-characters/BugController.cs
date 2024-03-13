@@ -27,8 +27,10 @@ public class BugController : MonoBehaviour
 
     // actually moves the bug with rotation
     void moveBug(){
+        // moves bug
         Vector3 movement = new Vector3(moveDirection.x, 0.0f, moveDirection.y);
 
+        // rotates bug
         if(moveDirection != Vector2.zero){
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), 0.15F);
         }
