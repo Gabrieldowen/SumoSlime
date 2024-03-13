@@ -11,7 +11,7 @@ public class collisionKnockback : MonoBehaviour
         if (rb != null)
         {
             Vector3 direction = collision.transform.position - transform.position;
-            direction.y = 0;
+            direction.y = 0.5f;
             rb.AddForce(direction.normalized * knockbackForce, ForceMode.Impulse);
         }
     }
