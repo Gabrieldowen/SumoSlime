@@ -512,6 +512,14 @@ PrefabInstance:
       propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 4164697910081831737, guid: b96a8f4b535624443a53399435a85181, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 433b5d19037a64cb69b96afeacf8aa2e, type: 2}
+    - target: {fileID: 7159212295773085341, guid: b96a8f4b535624443a53399435a85181, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 433b5d19037a64cb69b96afeacf8aa2e, type: 2}
     - target: {fileID: 8642011623936241306, guid: b96a8f4b535624443a53399435a85181, type: 3}
       propertyPath: m_Center.y
       value: 0
