@@ -8,8 +8,7 @@ public class RPBugController : MonoBehaviour
     public float speed = 5.0f;
 
     private float x;
-    private float z;
-    private bool rotateX;
+    
     private float rotationSpeed;
 
     private Vector2 moveDirection;
