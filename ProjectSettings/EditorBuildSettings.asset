@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DonutMap.unity
     guid: 99e8052767b0748ec969f514bd6cecf3
+  - enabled: 1
+    path: Assets/Scenes/EndGame.unity
+    guid: d4be78cb65ae647d39167898625c7e1a
   m_configObjects: {}
