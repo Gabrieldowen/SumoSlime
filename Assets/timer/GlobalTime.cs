@@ -18,6 +18,11 @@ public class GlobalTime : MonoBehaviour
     void Update()
     {
         timer -= Time.deltaTime;
+        timerSeconds.text = timer.ToString("f1");
+        if (timer <= 0) {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+
     }
 
     //public GameObject timeDisplay;
