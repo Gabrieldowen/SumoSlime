@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class EndGameMenu : MonoBehaviour
 {
     public void MainMenu() {
-        SceneManager.LoadScene((SceneManager.GetActiveScene().buildIndex));
+        SceneManager.LoadScene((SceneManager.GetActiveScene().buildIndex) -2);
     }
 
 
