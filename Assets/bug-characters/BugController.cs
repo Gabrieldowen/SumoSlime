@@ -15,6 +15,10 @@ public class BugController : MonoBehaviour
     private Rigidbody playerRB;
     private Vector3 startPOS;
 
+    // Trail
+    private LineRenderer lineRenderer;
+    private List<Vector3> points = new List<Vector3>();
+
     public void OnMove(InputAction.CallbackContext context)
     {
         moveDirection = context.ReadValue<Vector2>();
@@ -25,8 +29,15 @@ public class BugController : MonoBehaviour
     {
         // when you start the game set the startPOS to wherever the players start at
         playerRB = this.GetComponent<Rigidbody>();
+        lineRenderer = GetComponent<LineRenderer>();
+
+        // get starting point
         startPOS = playerRB.position;
         print("start pos is set to: " + startPOS);
+
+        // get init points for trail
+        lineRenderer.positionCount = 1;
+        points.Add(startPOS);
 
     }
 
@@ -34,6 +45,15 @@ public class BugController : MonoBehaviour
     void Update()
     {
         moveBug();
+        drawTrail();
+    }
+
+    void drawTrail(){
+        // Draw the trail
+        lineRenderer.positionCount = points.Count;
+        for(int i = 0; i < points.Count; i++){
+            lineRenderer.SetPosition(i, points[i]);
+        }
     }
 
     // actually moves the bug with rotation
@@ -45,9 +65,14 @@ public class BugController : MonoBehaviour
         if(moveDirection != Vector2.zero){
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), rotationEase);
         }
-
         transform.Translate(movement * speed * Time.deltaTime, Space.World);
+
+        // update trail if moving 
+        if(movement != Vector3.zero){
+            points.Add(playerRB.position);
+        }
     }
+
 
     void OnTriggerEnter(Collider other){
         // if the bug hits the water, reset the position & velocity
