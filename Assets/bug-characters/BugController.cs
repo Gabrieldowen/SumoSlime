@@ -7,8 +7,9 @@ using UnityEngine.SceneManagement;
 
 public class BugController : MonoBehaviour
 {
-    public float speed = 5.0f;
+    public float speed = 8.0f;
     public int lives = 3;
+    public float rotationEase = 0.1f;
     private Vector2 moveDirection;
 
     private Rigidbody playerRB;
@@ -42,7 +43,7 @@ public class BugController : MonoBehaviour
 
         // rotates bug
         if(moveDirection != Vector2.zero){
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), 0.15F);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), rotationEase);
         }
 
         transform.Translate(movement * speed * Time.deltaTime, Space.World);
