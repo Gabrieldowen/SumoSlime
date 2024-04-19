@@ -20,7 +20,7 @@ public class GlobalTime : MonoBehaviour
         timer -= Time.deltaTime;
         timerSeconds.text = timer.ToString("f1");
         if (timer <= 0) {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            SceneManager.LoadScene("EndGame");
         }
 
     }

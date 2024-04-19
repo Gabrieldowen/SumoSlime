@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
+
 
 public class BugController : MonoBehaviour
 {
     public float speed = 5.0f;
+    public int lives = 3;
     private Vector2 moveDirection;
 
     private Rigidbody playerRB;
@@ -70,7 +73,14 @@ public class BugController : MonoBehaviour
         playerRB.velocity = Vector3.zero;
         playerRB.angularVelocity = Vector3.zero;
         moveDirection = Vector2.zero;
+
         // here you can reset the trail or update count of falling/deaths
+        lives--;
+        if(lives <= 0){            
+            // go to the game over screen
+            SceneManager.LoadScene("EndGame");
+            
+        }
     }
 
 }

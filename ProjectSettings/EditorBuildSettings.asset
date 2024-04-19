@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EndGame.unity
     guid: d4be78cb65ae647d39167898625c7e1a
+  - enabled: 1
+    path: Assets/Scenes/FlatMap.unity
+    guid: 8bd02ba3c776d4afb8baf4e21a47b802
   m_configObjects: {}

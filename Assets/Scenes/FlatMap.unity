@@ -131,6 +131,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6555324699324170386, guid: 457378a3e5e2a4f21833be5847f46d40, type: 3}
+      propertyPath: lives
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8311673153266697166, guid: 457378a3e5e2a4f21833be5847f46d40, type: 3}
       propertyPath: m_Name
       value: rolliePrefab
@@ -367,6 +371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  lives: 3
 --- !u!114 &504283394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -508,7 +513,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.8113208, g: 0.6514831, b: 0.23344605, a: 1}
+  m_Color: {r: 0.7075472, g: 0.6358707, b: 0.45056072, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -734,6 +739,10 @@ PrefabInstance:
     - target: {fileID: 6002367026669854067, guid: 748a960267b2b459986739d966a313f4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6912241115624989631, guid: 748a960267b2b459986739d966a313f4, type: 3}
+      propertyPath: lives
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
