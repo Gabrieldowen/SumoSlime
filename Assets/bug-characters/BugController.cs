@@ -37,7 +37,7 @@ public class BugController : MonoBehaviour
 
         // get init points for trail
         lineRenderer.positionCount = 1;
-        points.Add(startPOS);
+        points.Add(new Vector3(startPOS.x, 0f, startPOS.z));
 
     }
 
@@ -46,6 +46,24 @@ public class BugController : MonoBehaviour
     {
         moveBug();
         drawTrail();
+        generateTrailMesh();
+    }
+
+    void generateTrailMesh(){
+        MeshCollider collider = GetComponent<MeshCollider>();
+
+        if (collider == null)
+        {
+            collider = gameObject.AddComponent<MeshCollider>();
+        }
+
+        collider.tag = "Trail";
+
+        // Generate the mesh
+        Mesh mesh = new Mesh();
+        lineRenderer.BakeMesh(mesh, true);
+        collider.sharedMesh = mesh;
+
     }
 
     void drawTrail(){
@@ -69,7 +87,7 @@ public class BugController : MonoBehaviour
 
         // update trail if moving 
         if(movement != Vector3.zero){
-            points.Add(playerRB.position);
+            points.Add(new Vector3(playerRB.position.x, 0f, playerRB.position.z));
         }
     }
 
@@ -88,6 +106,9 @@ public class BugController : MonoBehaviour
             return; // Exit the Update method early to prevent applying additional force
 
         }
+        if(other.tag == "Trail"){
+            print("You hit the trail!");
+        }
 
     }
 
@@ -99,6 +120,8 @@ public class BugController : MonoBehaviour
         playerRB.velocity = Vector3.zero;
         playerRB.angularVelocity = Vector3.zero;
         moveDirection = Vector2.zero;
+
+        points.Clear();
 
         // here you can reset the trail or update count of falling/deaths
         lives--;
