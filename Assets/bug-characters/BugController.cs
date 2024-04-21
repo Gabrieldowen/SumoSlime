@@ -129,7 +129,6 @@ public class BugController : MonoBehaviour
     }
     private void SpawnSlime()
     {
-        //Vector3Int gridPosition = tileMap.WorldToCell(transform.position + (Vector3)moveDirection);
         // Ever 0.15 seconds, spawn a slime
         if (spawnTimer > 0.15)// && tileMap.HasTile(gridPosition))
         {
