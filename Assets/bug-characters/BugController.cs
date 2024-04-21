@@ -15,6 +15,7 @@ public class BugController : MonoBehaviour
     private Rigidbody playerRB;
     private Vector3 startPOS;
 
+    public AudioSource audioSource;
     public void OnMove(InputAction.CallbackContext context)
     {
         moveDirection = context.ReadValue<Vector2>();
@@ -50,9 +51,12 @@ public class BugController : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other){
+
+
         // if the bug hits the water, reset the position & velocity
         if(other.tag == "Water"){
             print("You hit the water!");
+            audioSource.Play();
             resetGameState();
             // here you can reset the trail or update count of falling/deaths
         }
