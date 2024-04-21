@@ -18,13 +18,17 @@ public class BugController : MonoBehaviour
     [Header("Slime Types")]
     [SerializeField] private GameObject slimePrefab;
 
+    // Initialize the starting time of the slime spawner
     [Header("Spawn System")]
     [SerializeField] private float spawnTimer = 0f;
+
+    // Tilemap to be used to spawn blocks
     public Tilemap tileMap = null;
     //public List<Vector3> availablePlaces;
 
     public void OnMove(InputAction.CallbackContext context)
     {
+        // Input from user
         moveDirection = context.ReadValue<Vector2>();
 
     }
@@ -36,6 +40,7 @@ public class BugController : MonoBehaviour
         startPOS = playerRB.position;
         print("start pos is set to: " + startPOS);
 
+        // Initializes tilemap
         tileMap = transform.parent.GetComponent<Tilemap>();
         /*availablePlaces = new List<Vector3>();
 
@@ -64,6 +69,7 @@ public class BugController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Timer for spawning tiles
         spawnTimer += Time.deltaTime;
         moveBug();
     }
@@ -84,6 +90,7 @@ public class BugController : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), rotationEase);
         }
 
+        // Transfrom character position based on new information
         transform.Translate(movement * speed * Time.deltaTime, Space.World);
     }
 
@@ -122,14 +129,19 @@ public class BugController : MonoBehaviour
     }
     private void SpawnSlime()
     {
-        if (spawnTimer > 0.25)
+        //Vector3Int gridPosition = tileMap.WorldToCell(transform.position + (Vector3)moveDirection);
+        // Ever 0.15 seconds, spawn a slime
+        if (spawnTimer > 0.15)// && tileMap.HasTile(gridPosition))
         {
             // Instantiate a slime at a random available position
             //int randomIndex = Random.Range(0, availablePlaces.Count);
             //Vector3 spawnPosition = availablePlaces[randomIndex];
-            // Simulate character movement (you can replace this with your actual movement logic)
-            Vector3 characterPosition = transform.position;
-            Instantiate(slimePrefab, characterPosition, Quaternion.identity);
+            // Simulate character movement
+            // Spot on grid to place slime, only int positions are allowed on grid for easy mapping
+            Vector3 characterGridPosition = new Vector3((int)(transform.position.x), transform.position.y, (int)(transform.position.z));
+
+            // Spawns block
+            Instantiate(slimePrefab, characterGridPosition, Quaternion.identity);
 
             spawnTimer = 0f;
         }
