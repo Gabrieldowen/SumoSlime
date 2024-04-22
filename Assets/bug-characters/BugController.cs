@@ -9,7 +9,6 @@ using UnityEngine.Tilemaps;
 public class BugController : MonoBehaviour
 {
     public float speed = 8.0f;
-    public int lives = 3;
     public float rotationEase = 0.1f;
     private Vector2 moveDirection;
 
@@ -90,14 +89,6 @@ public class BugController : MonoBehaviour
         playerRB.velocity = Vector3.zero;
         playerRB.angularVelocity = Vector3.zero;
         moveDirection = Vector2.zero;
-
-        // here you can reset the trail or update count of falling/deaths
-        lives--;
-        print(lives + " lives left");  
-        if(lives <= 0){     
-            // go to the game over screen
-            SceneManager.LoadScene("EndGame");
-        }
         
         // loop through the tile map and remove all the filled cells of that player
         print("looping through the tile map" + tileMap.size.x +"x"+tileMap.size.y);
