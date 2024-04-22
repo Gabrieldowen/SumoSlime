@@ -27,6 +27,7 @@ public class BugController : MonoBehaviour
     // Tile to be used to fill the cells
     public TileBase filledCellTile = null;
 
+    public AudioSource audioSource;
     public void OnMove(InputAction.CallbackContext context)
     {
         // Input from user
@@ -67,9 +68,12 @@ public class BugController : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other){
+
+
         // if the bug hits the water, reset the position & velocity
         if(other.tag == "Water"){
             print("You hit the water!");
+            audioSource.Play();
             resetGameState();
             // here you can reset the trail or update count of falling/deaths
         }
