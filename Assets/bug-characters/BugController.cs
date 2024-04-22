@@ -24,7 +24,9 @@ public class BugController : MonoBehaviour
 
     // Tilemap to be used to spawn blocks
     public Tilemap tileMap = null;
-    //public List<Vector3> availablePlaces;
+
+    // Tile to be used to fill the cells
+    public TileBase filledCellTile = null;
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -40,30 +42,6 @@ public class BugController : MonoBehaviour
         startPOS = playerRB.position;
         print("start pos is set to: " + startPOS);
 
-        // Initializes tilemap
-        tileMap = transform.parent.GetComponent<Tilemap>();
-        /*availablePlaces = new List<Vector3>();
-
-        // Iterate through the tilemap cells
-        for (int n = tileMap.cellBounds.xMin; n < tileMap.cellBounds.xMax; n++)
-        {
-            for (int p = tileMap.cellBounds.yMin; p < tileMap.cellBounds.yMax; p++)
-            {
-                Vector3Int localPlace = new Vector3Int(n, p, (int)tileMap.transform.position.y);
-                Vector3 place = tileMap.CellToWorld(localPlace);
-
-                if (tileMap.HasTile(localPlace))
-                {
-                    // Tile at "place" is available for spawning
-                    availablePlaces.Add(place);
-                }
-                else
-                {
-                    // No tile at "place"
-                }
-            }
-        }
-        */
     }
 
     // Update is called once per frame
@@ -72,12 +50,7 @@ public class BugController : MonoBehaviour
         // Timer for spawning tiles
         spawnTimer += Time.deltaTime;
         moveBug();
-    }
-
-    private void FixedUpdate()
-    {
-        // Spawn slimes periodically
-        InvokeRepeating("SpawnSlime", spawnTimer, 0.05f);
+        SpawnSlime();
     }
 
     // actually moves the bug with rotation
@@ -105,8 +78,6 @@ public class BugController : MonoBehaviour
             // Nullify the force application when grounded
             playerRB.velocity = Vector3.zero;
             playerRB.angularVelocity = Vector3.zero;
-            return; // Exit the Update method early to prevent applying additional force
-
         }
 
     }
@@ -122,28 +93,38 @@ public class BugController : MonoBehaviour
 
         // here you can reset the trail or update count of falling/deaths
         lives--;
-        if(lives <= 0){            
+        print(lives + " lives left");  
+        if(lives <= 0){     
             // go to the game over screen
             SceneManager.LoadScene("EndGame");
         }
+        
+        // loop through the tile map and remove all the filled cells of that player
+        print("looping through the tile map" + tileMap.size.x +"x"+tileMap.size.y);
+        for (int x = -(int)(tileMap.size.x/2 -1); x < tileMap.size.x; x++)
+        {
+            for (int y = -(int)(tileMap.size.y/2 -1); y < tileMap.size.y; y++)
+            {
+                // Get the tile at the current position
+                Vector3Int pos = tileMap.WorldToCell(new Vector3(x, 0, y));
+                TileBase tile = tileMap.GetTile(pos);
+
+                // If the tile is the filled cell tile, remove it
+                if (tile == filledCellTile)
+                {
+                    tileMap.SetTile(pos, null);
+                }
+            }
+        }
+
     }
     private void SpawnSlime()
     {
-        // Ever 0.15 seconds, spawn a slime
-        if (spawnTimer > 0.15)// && tileMap.HasTile(gridPosition))
-        {
-            // Instantiate a slime at a random available position
-            //int randomIndex = Random.Range(0, availablePlaces.Count);
-            //Vector3 spawnPosition = availablePlaces[randomIndex];
-            // Simulate character movement
-            // Spot on grid to place slime, only int positions are allowed on grid for easy mapping
-            Vector3 characterGridPosition = new Vector3((int)(transform.position.x), transform.position.y, (int)(transform.position.z));
+        // Set the tile at the grid position to be the filled cell tile
+        Vector3Int gridPosition = tileMap.WorldToCell(transform.position);
 
-            // Spawns block
-            Instantiate(slimePrefab, characterGridPosition, Quaternion.identity);
-
-            spawnTimer = 0f;
-        }
+        // set the tile at the grid position to be the filled cell tile
+        tileMap.SetTile(gridPosition, filledCellTile);
     }
 
 }
