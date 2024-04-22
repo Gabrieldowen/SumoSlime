@@ -14,12 +14,6 @@ public class BugController : MonoBehaviour
 
     private Rigidbody playerRB;
     private Vector3 startPOS;
-    [Header("Slime Types")]
-    [SerializeField] private GameObject slimePrefab;
-
-    // Initialize the starting time of the slime spawner
-    [Header("Spawn System")]
-    [SerializeField] private float spawnTimer = 0f;
 
     // Tilemap to be used to spawn blocks
     public Tilemap tileMap = null;
@@ -48,7 +42,6 @@ public class BugController : MonoBehaviour
     void Update()
     {
         // Timer for spawning tiles
-        spawnTimer += Time.deltaTime;
         moveBug();
         SpawnSlime();
     }
