@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class CharacterSelectionManager : MonoBehaviour
 {
@@ -15,20 +16,29 @@ public class CharacterSelectionManager : MonoBehaviour
     public Color notSelectedColorDungBeetle = new Color(0.6f, 0.4f, 0.2f, 1f);
     public Color notSelectedColorRolyPoly = Color.gray;
     public Color notSelectedColorLadyBug = Color.red;
+    public TextMeshProUGUI dungBeetleP1Indicator;
+    public TextMeshProUGUI ladyBugP1Indicator;
+    public TextMeshProUGUI rolyPolyP1Indicator;
+    public TextMeshProUGUI dungBeetleP2Indicator;
+    public TextMeshProUGUI ladyBugP2Indicator;
+    public TextMeshProUGUI rolyPolyP2Indicator;
 
 
     private void Start()
     {
-        
-        UpdateButtonVisual("DungBeetle", true);
-        UpdateButtonVisual("LadyBug", true);
 
-       
-        selectedCharacters.Add("DungBeetle");
-        selectedCharacters.Add("LadyBug");
+        // Initialize default character selections
+        ToggleCharacterSelection("DungBeetle"); // For P1
+        ToggleCharacterSelection("LadyBug");    // For P2
 
-       
-        UpdateMapButtonVisual("FlatMap", true);
+        // Initialize default map selection
+        SelectMap("FlatMap");
+        UpdateMapButtonVisual("FlatMap", true); // You'll need to implement this
+
+        // Hide all indicators initially
+        HideAllIndicators();
+        dungBeetleP1Indicator.enabled = true;
+        ladyBugP2Indicator.enabled = true;
     }
 
     private void UpdateMapButtonVisual(string mapName, bool isSelected)
@@ -63,24 +73,28 @@ public class CharacterSelectionManager : MonoBehaviour
         if (!isAlreadySelected && selectedCharacters.Count < 2)
         {
             selectedCharacters.Add(characterName);
+            UpdatePlayerIndicator(characterName, selectedCharacters.Count);
         }
         else if (isAlreadySelected)
         {
+            UpdatePlayerIndicator(characterName, 0); // 0 to indicate deselection
             selectedCharacters.Remove(characterName);
         }
         else
         {
             // If we are trying to add a third character, deselect the first selected
             string toDeselect = selectedCharacters[0];
+            UpdatePlayerIndicator(toDeselect, 0); // Deselect the first character
             selectedCharacters.RemoveAt(0);
-            UpdateButtonVisual(toDeselect, false);
 
             selectedCharacters.Add(characterName);
+            UpdatePlayerIndicator(characterName, selectedCharacters.Count); // This will be P2 now
         }
 
         UpdateButtonVisual(characterName, !isAlreadySelected);
         GameManager.Instance.selectedCharacters = selectedCharacters.ToArray();
     }
+
 
     private void UpdateButtonVisual(string characterName, bool isSelected)
     {
@@ -102,17 +116,17 @@ public class CharacterSelectionManager : MonoBehaviour
                 notSelectedColor = notSelectedColorLadyBug;
                 break;
         }
-
-        if (btn != null)
-        {
-            ColorBlock colors = btn.colors;
-            colors.normalColor = isSelected ? selectedColor : notSelectedColor;
-            btn.colors = colors;
-        }
-        else
-        {
-            Debug.LogError("Button for character " + characterName + " is not set or found.");
-        }
+        
+        //if (btn != null)
+        //{
+        //    ColorBlock colors = btn.colors;
+        //    colors.normalColor = isSelected ? selectedColor : notSelectedColor;
+        //    btn.colors = colors;
+        //}
+        //else
+        //{
+        //    Debug.LogError("Button for character " + characterName + " is not set or found.");
+        //}
     }
     public void SelectMap(string mapName)
     {
@@ -145,4 +159,44 @@ public class CharacterSelectionManager : MonoBehaviour
         selectedColors.normalColor = selectedColor; // Yellow
         selectedMapButton.colors = selectedColors;
     }
+    private void UpdatePlayerIndicator(string characterName, int playerNumber)
+    {
+        // Hide all indicators by default
+        HideAllIndicators();
+
+        // Based on the current selection order, show the correct indicators
+        for (int i = 0; i < selectedCharacters.Count; i++)
+        {
+            string selected = selectedCharacters[i];
+            bool isP1 = i == 0; // First in the list is P1, second is P2
+
+            switch (selected)
+            {
+                case "DungBeetle":
+                    if (isP1) dungBeetleP1Indicator.enabled = true;
+                    else dungBeetleP2Indicator.enabled = true;
+                    break;
+                case "LadyBug":
+                    if (isP1) ladyBugP1Indicator.enabled = true;
+                    else ladyBugP2Indicator.enabled = true;
+                    break;
+                case "RolyPoly":
+                    if (isP1) rolyPolyP1Indicator.enabled = true;
+                    else rolyPolyP2Indicator.enabled = true;
+                    break;
+            }
+        }
+    }
+
+    private void HideAllIndicators()
+    {
+        dungBeetleP1Indicator.enabled = false;
+        dungBeetleP2Indicator.enabled = false;
+        ladyBugP1Indicator.enabled = false;
+        ladyBugP2Indicator.enabled = false;
+        rolyPolyP1Indicator.enabled = false;
+        rolyPolyP2Indicator.enabled = false;
+    }
+
+
 }
