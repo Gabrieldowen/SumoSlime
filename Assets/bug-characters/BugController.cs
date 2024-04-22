@@ -4,20 +4,33 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
+using UnityEngine.Tilemaps;
 
 public class BugController : MonoBehaviour
 {
     public float speed = 8.0f;
-    public int lives = 3;
     public float rotationEase = 0.1f;
     private Vector2 moveDirection;
 
     private Rigidbody playerRB;
     private Vector3 startPOS;
+    [Header("Slime Types")]
+    [SerializeField] private GameObject slimePrefab;
+
+    // Initialize the starting time of the slime spawner
+    [Header("Spawn System")]
+    [SerializeField] private float spawnTimer = 0f;
+
+    // Tilemap to be used to spawn blocks
+    public Tilemap tileMap = null;
+
+    // Tile to be used to fill the cells
+    public TileBase filledCellTile = null;
 
     public AudioSource audioSource;
     public void OnMove(InputAction.CallbackContext context)
     {
+        // Input from user
         moveDirection = context.ReadValue<Vector2>();
 
     }
@@ -34,7 +47,10 @@ public class BugController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Timer for spawning tiles
+        spawnTimer += Time.deltaTime;
         moveBug();
+        SpawnSlime();
     }
 
     // actually moves the bug with rotation
@@ -47,6 +63,7 @@ public class BugController : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), rotationEase);
         }
 
+        // Transfrom character position based on new information
         transform.Translate(movement * speed * Time.deltaTime, Space.World);
     }
 
@@ -64,8 +81,6 @@ public class BugController : MonoBehaviour
             // Nullify the force application when grounded
             playerRB.velocity = Vector3.zero;
             playerRB.angularVelocity = Vector3.zero;
-            return; // Exit the Update method early to prevent applying additional force
-
         }
 
     }
@@ -78,14 +93,33 @@ public class BugController : MonoBehaviour
         playerRB.velocity = Vector3.zero;
         playerRB.angularVelocity = Vector3.zero;
         moveDirection = Vector2.zero;
+        
+        // loop through the tile map and remove all the filled cells of that player
+        print("looping through the tile map" + tileMap.size.x +"x"+tileMap.size.y);
+        for (int x = -(int)(tileMap.size.x/2 -1); x < tileMap.size.x; x++)
+        {
+            for (int y = -(int)(tileMap.size.y/2 -1); y < tileMap.size.y; y++)
+            {
+                // Get the tile at the current position
+                Vector3Int pos = tileMap.WorldToCell(new Vector3(x, 0, y));
+                TileBase tile = tileMap.GetTile(pos);
 
-        // here you can reset the trail or update count of falling/deaths
-        lives--;
-        if(lives <= 0){            
-            // go to the game over screen
-            SceneManager.LoadScene("EndGame");
-            
+                // If the tile is the filled cell tile, remove it
+                if (tile == filledCellTile)
+                {
+                    tileMap.SetTile(pos, null);
+                }
+            }
         }
+
+    }
+    private void SpawnSlime()
+    {
+        // Set the tile at the grid position to be the filled cell tile
+        Vector3Int gridPosition = tileMap.WorldToCell(transform.position);
+
+        // set the tile at the grid position to be the filled cell tile
+        tileMap.SetTile(gridPosition, filledCellTile);
     }
 
 }
