@@ -4,11 +4,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
-public class MainMenu : MonoBehaviour
-{
-    public void playGame() {
-        SceneManager.LoadScene("FlatMap");
+public class MainMenu : MonoBehaviour {
 
+
+    public void playGame() {
+        string mapToLoad = GameManager.Instance.selectedMap;
+        UnityEngine.SceneManagement.SceneManager.LoadScene(mapToLoad);
     }
     public void QuitGame() {
         Debug.Log("QUIT!");

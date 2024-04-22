@@ -289,6 +289,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RealDungBeetlePrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 3204763684731336052, guid: 748a960267b2b459986739d966a313f4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4041352417316125880, guid: 748a960267b2b459986739d966a313f4, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -637,6 +641,10 @@ PrefabInstance:
     - target: {fileID: 8311673153266697166, guid: 457378a3e5e2a4f21833be5847f46d40, type: 3}
       propertyPath: m_Name
       value: rolliePrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 8311673153266697166, guid: 457378a3e5e2a4f21833be5847f46d40, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8652310017760598388, guid: 457378a3e5e2a4f21833be5847f46d40, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1487,6 +1495,53 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 849396512}
   m_SourcePrefab: {fileID: 100100000, guid: ed7cdbcfa76cf42f58cb9d2b1f511303, type: 3}
+--- !u!1 &1555820742
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1555820744}
+  - component: {fileID: 1555820743}
+  m_Layer: 0
+  m_Name: Characters
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1555820743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555820742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cad05b95ef3cf4df4bd621f215d7a142, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  realDungBeetlePrefab: {fileID: 3204763684731336052, guid: 748a960267b2b459986739d966a313f4, type: 3}
+  rolliePrefab: {fileID: 8311673153266697166, guid: 457378a3e5e2a4f21833be5847f46d40, type: 3}
+  LadyBugPrefab: {fileID: 723620397285714087, guid: b96a8f4b535624443a53399435a85181, type: 3}
+--- !u!4 &1555820744
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555820742}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1997594101
 GameObject:
   m_ObjectHideFlags: 0
@@ -1595,3 +1650,4 @@ SceneRoots:
   - {fileID: 1249134593}
   - {fileID: 1110210955}
   - {fileID: 1186282478}
+  - {fileID: 1555820744}
