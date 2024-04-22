@@ -983,7 +983,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 437011512}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2013961324}
+        m_TargetAssemblyTypeName: CharacterSelectionManager, Assembly-CSharp
+        m_MethodName: SelectMap
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: FlatMap
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &437011512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2511,7 +2523,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1195818684
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2561,6 +2573,7 @@ MonoBehaviour:
   selectedCharacters:
   - 
   - 
+  selectedMap: 
 --- !u!1 &1246953295
 GameObject:
   m_ObjectHideFlags: 0
@@ -3122,7 +3135,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2003188072}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2013961324}
+        m_TargetAssemblyTypeName: CharacterSelectionManager, Assembly-CSharp
+        m_MethodName: SelectMap
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: DonutMap
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2003188072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3178,7 +3203,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2013961323
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3221,6 +3246,8 @@ MonoBehaviour:
   dungBeetleButton: {fileID: 440359695}
   rolyPolyButton: {fileID: 465059596}
   ladyBugButton: {fileID: 1416721804}
+  flatMapButton: {fileID: 437011511}
+  donutMapButton: {fileID: 2003188071}
   selectedColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   notSelectedColorDungBeetle: {r: 0.6, g: 0.4, b: 0.2, a: 1}
   notSelectedColorRolyPoly: {r: 0.5, g: 0.5, b: 0.5, a: 1}

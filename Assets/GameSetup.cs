@@ -40,6 +40,5 @@ public class GameSetup : MonoBehaviour
                 return null;
         }
     }
-
     
 }

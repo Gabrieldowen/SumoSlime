@@ -16,6 +16,46 @@ public class CharacterSelectionManager : MonoBehaviour
     public Color notSelectedColorRolyPoly = Color.gray;
     public Color notSelectedColorLadyBug = Color.red;
 
+
+    private void Start()
+    {
+        
+        UpdateButtonVisual("DungBeetle", true);
+        UpdateButtonVisual("LadyBug", true);
+
+       
+        selectedCharacters.Add("DungBeetle");
+        selectedCharacters.Add("LadyBug");
+
+       
+        UpdateMapButtonVisual("FlatMap", true);
+    }
+
+    private void UpdateMapButtonVisual(string mapName, bool isSelected)
+    {
+        Button mapButton = null;
+        switch (mapName)
+        {
+            case "FlatMap":
+                mapButton = flatMapButton;
+                break;
+            case "DonutMap":
+                mapButton = donutMapButton;
+                break;
+        }
+
+        if (mapButton != null)
+        {
+            ColorBlock colors = mapButton.colors;
+            colors.normalColor = isSelected ? selectedColor : Color.green; // Use the not-selected color
+            mapButton.colors = colors;
+            if (isSelected)
+            {
+                selectedMapButton = mapButton; // Keep track of the selected map button
+            }
+        }
+    }
+
     public void ToggleCharacterSelection(string characterName)
     {
         bool isAlreadySelected = selectedCharacters.Contains(characterName);
