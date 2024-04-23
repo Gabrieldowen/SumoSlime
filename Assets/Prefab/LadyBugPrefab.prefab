@@ -168,10 +168,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 178550edc44cc45809a0e66a2ed42da2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+# <<<<<<< CharacterSelection
+#   speed: 5
+#   lives: 3
+#   rotationEase: 0.1
+# =======
   speed: 8
   lives: 3
   rotationEase: 0.03
   audioSource: {fileID: 0}
+# >>>>>>> main
 --- !u!114 &2865191481065804498
 MonoBehaviour:
   m_ObjectHideFlags: 0
