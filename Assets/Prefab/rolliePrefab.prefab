@@ -1182,7 +1182,7 @@ Transform:
   m_GameObject: {fileID: 8311673153266697166}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -5.6125436, y: 4.4, z: -7.704521}
+  m_LocalPosition: {x: -5.6125436, y: -3.2, z: -7.704521}
   m_LocalScale: {x: 0.75000024, y: 0.75, z: 0.75000024}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1232,7 +1232,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: 8f01ad92-7b1e-4bf4-a03a-a5361d3f965c
-    m_ActionName: Bug/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
+    m_ActionName: Bug/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: WASD
   m_DefaultActionMap: Bug
@@ -1325,7 +1325,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 178550edc44cc45809a0e66a2ed42da2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 8
+  rotationEase: 0.03
+  tileMap: {fileID: 0}
+  filledCellTile: {fileID: 11400000, guid: ba70fa590d79145209b8287e9060b944, type: 2}
+  audioSource: {fileID: 0}
 --- !u!1 &8390028678315294006
 GameObject:
   m_ObjectHideFlags: 0
