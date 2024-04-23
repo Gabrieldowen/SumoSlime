@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641228, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -346,6 +346,53 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 748a960267b2b459986739d966a313f4, type: 3}
+--- !u!1 &537004212
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 537004214}
+  - component: {fileID: 537004213}
+  m_Layer: 0
+  m_Name: Characters
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &537004213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537004212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cad05b95ef3cf4df4bd621f215d7a142, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  realDungBeetlePrefab: {fileID: 3204763684731336052, guid: 748a960267b2b459986739d966a313f4, type: 3}
+  rolliePrefab: {fileID: 8311673153266697166, guid: 457378a3e5e2a4f21833be5847f46d40, type: 3}
+  LadyBugPrefab: {fileID: 723620397285714087, guid: b96a8f4b535624443a53399435a85181, type: 3}
+--- !u!4 &537004214
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537004212}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &692295500
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -489,8 +536,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  lives: 3
   rotationEase: 0.1
+  tileMap: {fileID: 0}
+  filledCellTile: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!114 &701361517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -689,16 +738,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8311673153266697166, guid: 457378a3e5e2a4f21833be5847f46d40, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1294750045}
-    - targetCorrespondingSourceObject: {fileID: 8311673153266697166, guid: 457378a3e5e2a4f21833be5847f46d40, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1294750053}
-    - targetCorrespondingSourceObject: {fileID: 2309613910664360545, guid: 457378a3e5e2a4f21833be5847f46d40, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 815431340}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 457378a3e5e2a4f21833be5847f46d40, type: 3}
 --- !u!1001 &794244501
 PrefabInstance:
@@ -1504,11 +1544,7 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 849396512}
   m_SourcePrefab: {fileID: 100100000, guid: ed7cdbcfa76cf42f58cb9d2b1f511303, type: 3}
-# <<<<<<< CharacterSelection
-# --- !u!1 &1555820742
-# =======
 --- !u!1 &1361709876
-# >>>>>>> main
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1516,147 +1552,21 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-# <<<<<<< CharacterSelection
-#   - component: {fileID: 1555820744}
-#   - component: {fileID: 1555820743}
-#   m_Layer: 0
-#   m_Name: Characters
-# =======
-  - component: {fileID: 1361709878}
   - component: {fileID: 1361709877}
   m_Layer: 0
-  m_Name: BackgroundMusic
-# >>>>>>> main
+  m_Name: 
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
-# <<<<<<< CharacterSelection
-# --- !u!114 &1555820743
-# MonoBehaviour:
-# =======
---- !u!82 &1361709877
-AudioSource:
-# >>>>>>> main
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-# <<<<<<< CharacterSelection
-#   m_GameObject: {fileID: 1555820742}
-#   m_Enabled: 1
-#   m_EditorHideFlags: 0
-#   m_Script: {fileID: 11500000, guid: cad05b95ef3cf4df4bd621f215d7a142, type: 3}
-#   m_Name: 
-#   m_EditorClassIdentifier: 
-#   realDungBeetlePrefab: {fileID: 3204763684731336052, guid: 748a960267b2b459986739d966a313f4, type: 3}
-#   rolliePrefab: {fileID: 8311673153266697166, guid: 457378a3e5e2a4f21833be5847f46d40, type: 3}
-#   LadyBugPrefab: {fileID: 723620397285714087, guid: b96a8f4b535624443a53399435a85181, type: 3}
-# --- !u!4 &1555820744
-# =======
-  m_GameObject: {fileID: 1361709876}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 09c7cd3d19df144c68f23b7d2f996dd6, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 1
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
---- !u!4 &1361709878
-# >>>>>>> main
+  m_IsActive: 0
+--- !u!4 &1361709877
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-# <<<<<<< CharacterSelection
-#   m_GameObject: {fileID: 1555820742}
-# =======
   m_GameObject: {fileID: 1361709876}
-# >>>>>>> main
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -1763,6 +1673,7 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1361709877}
   - {fileID: 692295500}
   - {fileID: 829475011}
   - {fileID: 1997594103}
@@ -1771,10 +1682,6 @@ SceneRoots:
   - {fileID: 239495187}
   - {fileID: 794244501}
   - {fileID: 1249134593}
-# <<<<<<< CharacterSelection
-#   - {fileID: 1110210955}
-#   - {fileID: 1186282478}
-#   - {fileID: 1555820744}
-# =======
-  - {fileID: 1361709878}
-# >>>>>>> main
+  - {fileID: 1110210955}
+  - {fileID: 1186282478}
+  - {fileID: 537004214}
