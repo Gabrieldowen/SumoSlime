@@ -8,8 +8,8 @@ public class GameSetup : MonoBehaviour
 
     private Vector3[] startPositions = new Vector3[]
     {
-        new Vector3(8f, 3.5f, 2f), // Position for the first character
-        new Vector3(-5.5f, 4.5f, -7.7f) // Position for the second character
+        new Vector3(8f, -4.0f, 2f), // Position for the first character
+        new Vector3(-5.5f, -4.9f, -7.7f) // Position for the second character
     };
 
     private void Start()
