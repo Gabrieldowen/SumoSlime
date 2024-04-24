@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-
 using UnityEngine.Tilemaps;
 
 public class BugController : MonoBehaviour
@@ -21,7 +20,8 @@ public class BugController : MonoBehaviour
     // Tile to be used to fill the cells
     public TileBase filledCellTile;
 
-    public AudioSource audioSource;
+    private AudioSource splashAudioSource;
+
     public void OnMove(InputAction.CallbackContext context)
     {
         // Input from user
@@ -31,6 +31,9 @@ public class BugController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // load in the splash sound
+        splashAudioSource = GameObject.Find("SplashSound").GetComponent<AudioSource>();
+
         // when you start the game set the startPOS to wherever the players start at
         playerRB = this.GetComponent<Rigidbody>();
         startPOS = playerRB.position;
@@ -67,7 +70,7 @@ public class BugController : MonoBehaviour
         // if the bug hits the water, reset the position & velocity
         if(other.tag == "Water"){
             print("You hit the water!");
-            audioSource.Play();
+            splashAudioSource.Play();
             resetGameState();
             // here you can reset the trail or update count of falling/deaths
         }
