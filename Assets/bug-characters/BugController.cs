@@ -22,6 +22,13 @@ public class BugController : MonoBehaviour
 
     private AudioSource splashAudioSource;
 
+    // Audio source to play when the bug hits the water
+    public AudioSource audioSource;
+
+    // Ground check variables
+    private bool grounded = false;
+
+
     public void OnMove(InputAction.CallbackContext context)
     {
         // Input from user
@@ -45,7 +52,7 @@ public class BugController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Timer for spawning tiles
+
         moveBug();
         SpawnSlime();
     }
@@ -74,19 +81,23 @@ public class BugController : MonoBehaviour
             resetGameState();
             // here you can reset the trail or update count of falling/deaths
         }
-        if(other.tag == "Ground" && playerRB.velocity != Vector3.zero && playerRB.angularVelocity != Vector3.zero){
-            // Nullify the force application when grounded
-            playerRB.velocity = Vector3.zero;
-            playerRB.angularVelocity = Vector3.zero;
-        }
+        
 
+    }
+    void OnCollisionEnter(Collision collision){
+        if(collision.gameObject.tag == "Ground"){
+            grounded = true;
+        }
+    }
+    void OnCollisionExit(Collision collision){
+        if(collision.gameObject.tag == "Ground"){
+            grounded = false;
+        }
     }
 
     void resetGameState(){
         // reset the game state
-        print("resetting position to: " + startPOS + "from position: " + playerRB.position);
         playerRB.position = startPOS;
-        print("now position is: " + playerRB.position);
         playerRB.velocity = Vector3.zero;
         playerRB.angularVelocity = Vector3.zero;
         moveDirection = Vector2.zero;
@@ -112,11 +123,14 @@ public class BugController : MonoBehaviour
     }
     private void SpawnSlime()
     {
+        if(grounded){
         // Set the tile at the grid position to be the filled cell tile
         Vector3Int gridPosition = tileMap.WorldToCell(transform.position);
 
         // set the tile at the grid position to be the filled cell tile
         tileMap.SetTile(gridPosition, filledCellTile);
+        }
     }
 
 }
+
