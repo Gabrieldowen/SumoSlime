@@ -219,8 +219,9 @@ MonoBehaviour:
   speed: 8
   rotationEase: 0.03
   tileMap: {fileID: 0}
-  filledCellTile: {fileID: 0}
+  filledCellTile: {fileID: 11400000, guid: ba70fa590d79145209b8287e9060b944, type: 2}
   audioSource: {fileID: 0}
+  platformSize: 0
 --- !u!114 &2865191481065804498
 MonoBehaviour:
   m_ObjectHideFlags: 0
