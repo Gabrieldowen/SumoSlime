@@ -33,14 +33,14 @@ public class CharacterSelectionManager : MonoBehaviour
 
         // Initialize default map selection
         SelectMap("FlatMap");
-        UpdateMapButtonVisual("FlatMap", true); // You'll need to implement this
+        UpdateMapButtonVisual("FlatMap", true); // Set FlatMap to default and have it selected in the options menu
 
         // Hide all indicators initially
         HideAllIndicators();
-        dungBeetleP1Indicator.enabled = true;
+        dungBeetleP1Indicator.enabled = true;  //have dungbeetle and ladybug enabled to show they are the two default characters
         ladyBugP2Indicator.enabled = true;
     }
-
+    // This is just for the button visual to know what map is selected
     private void UpdateMapButtonVisual(string mapName, bool isSelected)
     {
         Button mapButton = null;
@@ -65,7 +65,7 @@ public class CharacterSelectionManager : MonoBehaviour
             }
         }
     }
-
+    // This is to show who P1 and P2 are, as well as who is selected for the game
     public void ToggleCharacterSelection(string characterName)
     {
         bool isAlreadySelected = selectedCharacters.Contains(characterName);
@@ -95,7 +95,7 @@ public class CharacterSelectionManager : MonoBehaviour
         GameManager.Instance.selectedCharacters = selectedCharacters.ToArray();
     }
 
-
+    // need to adjust this for character buttons to be yellow when selected
     private void UpdateButtonVisual(string characterName, bool isSelected)
     {
         Button btn = null;
@@ -128,6 +128,7 @@ public class CharacterSelectionManager : MonoBehaviour
         //    Debug.LogError("Button for character " + characterName + " is not set or found.");
         //}
     }
+    // This sets up the map
     public void SelectMap(string mapName)
     {
         // Update visual for previously selected map button
@@ -159,6 +160,7 @@ public class CharacterSelectionManager : MonoBehaviour
         selectedColors.normalColor = selectedColor; // Yellow
         selectedMapButton.colors = selectedColors;
     }
+    // This also updates the P1 and P2
     private void UpdatePlayerIndicator(string characterName, int playerNumber)
     {
         // Hide all indicators by default
