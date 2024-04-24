@@ -61,33 +61,14 @@ public class BugController : MonoBehaviour
 
 
     //     // Calculate the corners
-    //     Vector3 topLeft = bounds.center + new Vector3(-bounds.extents.x, bounds.extents.y, bounds.extents.z);
-    //     Vector3 topRight = bounds.center + new Vector3(bounds.extents.x, bounds.extents.y, bounds.extents.z);
-    //     Vector3 bottomLeft = bounds.center + new Vector3(-bounds.extents.x, bounds.extents.y, -bounds.extents.z);
-    //     Vector3 bottomRight = bounds.center + new Vector3(bounds.extents.x, bounds.extents.y, -bounds.extents.z);
+    //     Vector3Int topLeft = tileMap.WorldToCell(bounds.center + new Vector3(-bounds.extents.x, bounds.extents.y, bounds.extents.z));
+    //     Vector3Int topRight = tileMap.WorldToCell(bounds.center + new Vector3(bounds.extents.x, bounds.extents.y, bounds.extents.z));
+    //     Vector3Int bottomLeft = tileMap.WorldToCell(bounds.center + new Vector3(-bounds.extents.x, bounds.extents.y, -bounds.extents.z));
+    //     Vector3Int bottomRight = tileMap.WorldToCell(bounds.center + new Vector3(bounds.extents.x, bounds.extents.y, -bounds.extents.z));
 
-    //     // Find the bounds of the rectangle defined by the four points
-    //     float minX = Mathf.Min(topLeft.x, topRight.x, bottomLeft.x, bottomRight.x);
-    //     float maxX = Mathf.Max(topLeft.x, topRight.x, bottomLeft.x, bottomRight.x);
-    //     float minY = Mathf.Min(topLeft.y, topRight.y, bottomLeft.y, bottomRight.y);
-    //     float maxY = Mathf.Max(topLeft.y, topRight.y, bottomLeft.y, bottomRight.y);
-
-    //     // Convert world positions to grid positions
-    //     Vector3Int minCellPosition = tileMap.WorldToCell(new Vector3(minX, minY, 0f));
-    //     Vector3Int maxCellPosition = tileMap.WorldToCell(new Vector3(maxX, maxY, 0f));
-
-    //     // Iterate over all cells within the rectangle bounds
-    //     for (int x = minCellPosition.x; x <= maxCellPosition.x; x++)
-    //     {
-    //         for (int y = minCellPosition.y; y <= maxCellPosition.y; y++)
-    //         {
-    //             Vector3Int cellPosition = new Vector3Int(x, y, 0);
-
-    //             // Do something with the cell position
-    //             Debug.Log("Cell position: " + cellPosition);
-    //             platformSize++;
-    //         }
-    //     }
+    //     int side1 = Mathf.Abs(topLeft.x - topRight.x) + Mathf.Abs(topLeft.y - topRight.y);
+    //     int side2 = Mathf.Abs(bottomLeft.x - bottomRight.x) + Mathf.Abs(bottomLeft.y - bottomRight.y);
+    //     platformSize = side1 * side2;
 
     // }
 
