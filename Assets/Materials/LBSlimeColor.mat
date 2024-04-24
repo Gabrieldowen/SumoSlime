@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: LBSlimeColor
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_Parent: {fileID: 2100000, guid: 40a3fc8eb96f5ac40b7d8951b825a946, type: 2}
+  m_Parent: {fileID: 2100000, guid: da3573b9325784bc193c6d84f53c033f, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -26,5 +26,5 @@ Material:
     m_Ints: []
     m_Floats: []
     m_Colors:
-    - _Color: {r: 1, g: 0, b: 0.07306862, a: 1}
+    - _Color: {r: 0.20000002, g: 0.20000002, b: 0.20000002, a: 1}
   m_BuildTextureStacks: []

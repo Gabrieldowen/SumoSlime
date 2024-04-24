@@ -16,10 +16,10 @@ public class BugController : MonoBehaviour
     private Vector3 startPOS;
 
     // Tilemap to be used to spawn blocks
-    public Tilemap tileMap = null;
+    private Tilemap tileMap = null;
 
     // Tile to be used to fill the cells
-    public TileBase filledCellTile = null;
+    public TileBase filledCellTile;
 
     public AudioSource audioSource;
     public void OnMove(InputAction.CallbackContext context)
@@ -35,6 +35,7 @@ public class BugController : MonoBehaviour
         playerRB = this.GetComponent<Rigidbody>();
         startPOS = playerRB.position;
         print("start pos is set to: " + startPOS);
+        tileMap = GameObject.Find("Tilemap").GetComponent<Tilemap>();
 
     }
 

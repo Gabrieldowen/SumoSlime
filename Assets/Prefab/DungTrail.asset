@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d1514134bc4fbd41bb739b1b9a49231, type: 3}
-  m_Name: SlimeTileRed
+  m_Name: DungTrail
   m_EditorClassIdentifier: 
   m_DefaultSprite: {fileID: 0}
-  m_DefaultGameObject: {fileID: 6670319101235852718, guid: b5d5f6f1e0c0c0c4d8853ede820e088d, type: 3}
-  m_DefaultColliderType: 2
+  m_DefaultGameObject: {fileID: 6670319101235852718, guid: 8623b58ca7a5c274a930138504780945, type: 3}
+  m_DefaultColliderType: 1
   m_TilingRules: []
