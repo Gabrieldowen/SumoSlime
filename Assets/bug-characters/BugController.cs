@@ -101,21 +101,23 @@ public class BugController : MonoBehaviour
         playerRB.velocity = Vector3.zero;
         playerRB.angularVelocity = Vector3.zero;
         moveDirection = Vector2.zero;
-        
-        // loop through the tile map and remove all the filled cells of that player
-        print("looping through the tile map" + tileMap.size.x +"x"+tileMap.size.y);
-        for (int x = -(int)(tileMap.size.x/2 -1); x < tileMap.size.x; x++)
-        {
-            for (int y = -(int)(tileMap.size.y/2 -1); y < tileMap.size.y; y++)
-            {
-                // Get the tile at the current position
-                Vector3Int pos = tileMap.WorldToCell(new Vector3(x, 0, y));
-                TileBase tile = tileMap.GetTile(pos);
 
-                // If the tile is the filled cell tile, remove it
-                if (tile == filledCellTile)
+        BoundsInt bounds = tileMap.cellBounds;
+        TileBase[] allTiles = tileMap.GetTilesBlock(bounds); // Get all tiles within the bounds
+
+        for (int x = bounds.xMin; x < bounds.xMax; x++)
+        {
+            for (int y = bounds.yMin; y < bounds.yMax; y++)
+            {
+                for (int z = bounds.zMin; z < bounds.zMax; z++)
                 {
-                    tileMap.SetTile(pos, null);
+                    Vector3Int cellPosition = new Vector3Int(x, y, z);
+                    TileBase tile = tileMap.GetTile(cellPosition);
+
+                    if (tile == filledCellTile)
+                    {
+                        tileMap.SetTile(cellPosition, null);
+                    }
                 }
             }
         }
