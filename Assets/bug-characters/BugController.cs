@@ -3,26 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-
 using UnityEngine.Tilemaps;
 
 public class BugController : MonoBehaviour
 {
-    public float speed = 8.0f;
-    public float rotationEase = 0.9f;
-    private Vector2 moveDirection;
+    public float speed = 8.0f;              // Character speed
+    public float rotationEase = 0.9f;       // Used for rotating a character to face where they are moving
+    private Vector2 moveDirection;          // Player input for movement along a 2D grid
 
-    private Rigidbody playerRB;
-    private GameObject rollie;          // Rollie object for spinning reasons
-    private Vector3 startPOS;
+    private Rigidbody playerRB;             // Rigidbody of the assigned character
+    private GameObject rollie;              // Rollie object for spinning reasons
+    private Vector3 startPOS;               // Starting location of the character
+    public Tilemap tileMap = null;          // Tilemap to be used to spawn blocks
 
-    // Tilemap to be used to spawn blocks
-    public Tilemap tileMap = null;
+    public TileBase filledCellTile = null;  // Tile to be used to fill the cells
 
-    // Tile to be used to fill the cells
-    public TileBase filledCellTile = null;
+    public AudioSource audioSource;         // Audio to be played
 
-    public AudioSource audioSource;
+    // Method to get 
     public void OnMove(InputAction.CallbackContext context)
     {
         // Input from user
@@ -43,8 +41,10 @@ public class BugController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Timer for spawning tiles
+        // Move the bug
         moveBug();
+
+        // Spawn the slime
         SpawnSlime();
     }
 
@@ -60,11 +60,12 @@ public class BugController : MonoBehaviour
         float rollingAngle = 1f; // Adjust the rolling speed as needed
 
         // rotates bug
-        if(moveDirection != Vector2.zero){
-            if(playerRB == rollie.GetComponent<Rigidbody>()){
-                transform.Rotate(Vector3.right, rollingAngle * (float)6);
+        if(moveDirection != Vector2.zero){      // Determines if there is movement input, do this
+            if(playerRB == rollie.GetComponent<Rigidbody>()){               // Determines if this model is the rollie
+                transform.Rotate(Vector3.right, rollingAngle * (float)6);   // Spin the rollie
             }
             
+            // Rotate the character to face the way they are moving
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), rotationEase);
         }
 
