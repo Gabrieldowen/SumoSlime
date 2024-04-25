@@ -19,6 +19,10 @@ public class GameSetup : MonoBehaviour
         {
             string characterName = GameManager.Instance.selectedCharacters[i];
             GameObject prefab = GetPrefabByName(characterName);
+
+            // Set the player ID
+            prefab.GetComponent<BugController>().playerID = i + 1;
+            
             if (prefab != null && i < startPositions.Length)
             {
                 Instantiate(prefab, startPositions[i], Quaternion.identity);

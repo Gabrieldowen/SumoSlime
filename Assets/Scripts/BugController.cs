@@ -31,6 +31,8 @@ public class BugController : MonoBehaviour
     // trail amount
     private int trailCount = 0;
 
+    public int playerID;
+
     private Bounds platformBounds;
     public int platformSize = 0;
 
@@ -166,6 +168,10 @@ public class BugController : MonoBehaviour
             }
 
         }
+    }
+    public void SaveScore(){
+        print("Player_"+playerID+"_Score: "+trailCount+" saved!");
+        PlayerPrefs.SetInt("Player_"+playerID+"_Score", trailCount);
     }
 
 }
