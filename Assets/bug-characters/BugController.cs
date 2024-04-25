@@ -62,7 +62,7 @@ public class BugController : MonoBehaviour
         // rotates bug
         if(moveDirection != Vector2.zero){
             if(playerRB == rollie.GetComponent<Rigidbody>()){
-                transform.Rotate(Vector3.right, rollingAngle * 6);
+                transform.Rotate(Vector3.right, rollingAngle * (float)6);
             }
             
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), rotationEase);
