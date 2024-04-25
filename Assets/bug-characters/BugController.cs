@@ -9,10 +9,11 @@ using UnityEngine.Tilemaps;
 public class BugController : MonoBehaviour
 {
     public float speed = 8.0f;
-    public float rotationEase = 0.1f;
+    public float rotationEase = 0.9f;
     private Vector2 moveDirection;
 
     private Rigidbody playerRB;
+    private GameObject rollie;          // Rollie object for spinning reasons
     private Vector3 startPOS;
 
     // Tilemap to be used to spawn blocks
@@ -33,6 +34,7 @@ public class BugController : MonoBehaviour
     {
         // when you start the game set the startPOS to wherever the players start at
         playerRB = this.GetComponent<Rigidbody>();
+        rollie = GameObject.Find("rolliePrefab");
         startPOS = playerRB.position;
         print("start pos is set to: " + startPOS);
 
@@ -51,8 +53,18 @@ public class BugController : MonoBehaviour
         // moves bug
         Vector3 movement = new Vector3(moveDirection.x, 0.0f, moveDirection.y);
 
+        // Calculate the rolling forward vector (along the X-axis)
+        Vector3 rollingForward = Vector3.right;
+
+        // Rotate the bug around its local X-axis
+        float rollingAngle = 1f; // Adjust the rolling speed as needed
+
         // rotates bug
         if(moveDirection != Vector2.zero){
+            if(playerRB == rollie.GetComponent<Rigidbody>()){
+                transform.Rotate(Vector3.right, rollingAngle * 6);
+            }
+            
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), rotationEase);
         }
 
