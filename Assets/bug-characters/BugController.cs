@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
+using TMPro;
 
 public class BugController : MonoBehaviour
 {
@@ -30,6 +31,9 @@ public class BugController : MonoBehaviour
 
     // trail amount
     private int trailCount = 0;
+
+    public TextMeshProUGUI trailCountText;
+    public int playerNumber = 1;
 
     private Bounds platformBounds;
     public int platformSize = 0;
@@ -155,16 +159,20 @@ public class BugController : MonoBehaviour
     }
     private void SpawnSlime()
     {
-        if(grounded){
-            // Set the tile at the grid position to be the filled cell tile
+        if (grounded)
+        {
             Vector3Int gridPosition = tileMap.WorldToCell(transform.position);
 
-            if(tileMap.GetTile(gridPosition) != filledCellTile){
-                 // set the tile at the grid position to be the filled cell tile
+            if (tileMap.GetTile(gridPosition) != filledCellTile)
+            {
                 tileMap.SetTile(gridPosition, filledCellTile);
                 trailCount++;
+                // Update the UI through the UIManager
+                if (playerNumber == 1)
+                    UIManager.Instance.UpdateGameScore1(trailCount);
+                else
+                    UIManager.Instance.UpdateGameScore2(trailCount);
             }
-
         }
     }
 
