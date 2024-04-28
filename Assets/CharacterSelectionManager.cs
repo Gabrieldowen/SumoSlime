@@ -179,8 +179,14 @@ public class CharacterSelectionManager : MonoBehaviour
                     else dungBeetleP2Indicator.enabled = true;
                     break;
                 case "LadyBug":
-                    if (isP1) ladyBugP1Indicator.enabled = true;
-                    else ladyBugP2Indicator.enabled = true;
+                    if (isP1){
+                        if (ladyBugP1Indicator == null) Debug.LogError("ladyBugP1Indicator is not assigned!");
+                        else ladyBugP1Indicator.enabled = true;
+                    }
+                    else {
+                        if (ladyBugP2Indicator == null) Debug.LogError("ladyBugP2Indicator is not assigned!");
+                        else ladyBugP2Indicator.enabled = true;
+                    }
                     break;
                 case "RolyPoly":
                     if (isP1) rolyPolyP1Indicator.enabled = true;
