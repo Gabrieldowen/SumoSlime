@@ -4,10 +4,11 @@ public class GameSetup : MonoBehaviour
 {
     public GameObject realDungBeetlePrefab;
     public GameObject rolliePrefab;
-    public GameObject LadyBugPrefab;
+    public GameObject ladybug2Prefab;
 
     private Vector3[] startPositions = new Vector3[]
     {
+
         new Vector3(8f, -4.0f, 2f), // Position for the first character
         new Vector3(-5.5f, -4.9f, -7.7f) // Position for the second character
     };
@@ -26,10 +27,16 @@ public class GameSetup : MonoBehaviour
             
             if (prefab != null && i < startPositions.Length)
             {
-                Instantiate(prefab, startPositions[i], Quaternion.identity);
+                GameObject characterInstance = Instantiate(prefab, startPositions[i], Quaternion.identity);
+                BugController bugController = characterInstance.GetComponent<BugController>();
+                if (bugController != null)
+                {
+                    bugController.playerNumber = i + 1;  // Assign player number based on order of instantiation
+                }
             }
         }
     }
+
 
     private GameObject GetPrefabByName(string characterName)
     {
@@ -40,7 +47,7 @@ public class GameSetup : MonoBehaviour
             case "RolyPoly":
                 return rolliePrefab;
             case "LadyBug":
-                return LadyBugPrefab;
+                return ladybug2Prefab;
             default:
                 return null;
         }

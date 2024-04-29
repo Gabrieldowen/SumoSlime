@@ -179,8 +179,14 @@ public class CharacterSelectionManager : MonoBehaviour
                     else dungBeetleP2Indicator.enabled = true;
                     break;
                 case "LadyBug":
-                    if (isP1) ladyBugP1Indicator.enabled = true;
-                    else ladyBugP2Indicator.enabled = true;
+                    if (isP1){
+                        if (ladyBugP1Indicator == null) Debug.LogError("ladyBugP1Indicator is not assigned!");
+                        else ladyBugP1Indicator.enabled = true;
+                    }
+                    else {
+                        if (ladyBugP2Indicator == null) Debug.LogError("ladyBugP2Indicator is not assigned!");
+                        else ladyBugP2Indicator.enabled = true;
+                    }
                     break;
                 case "RolyPoly":
                     if (isP1) rolyPolyP1Indicator.enabled = true;
@@ -192,12 +198,12 @@ public class CharacterSelectionManager : MonoBehaviour
 
     private void HideAllIndicators()
     {
-        dungBeetleP1Indicator.enabled = false;
-        dungBeetleP2Indicator.enabled = false;
-        ladyBugP1Indicator.enabled = false;
-        ladyBugP2Indicator.enabled = false;
-        rolyPolyP1Indicator.enabled = false;
-        rolyPolyP2Indicator.enabled = false;
+        if (dungBeetleP1Indicator != null) dungBeetleP1Indicator.enabled = false;
+        if (dungBeetleP2Indicator != null) dungBeetleP2Indicator.enabled = false;
+        if (rolyPolyP1Indicator != null) rolyPolyP1Indicator.enabled = false;
+        if (rolyPolyP2Indicator != null) rolyPolyP2Indicator.enabled = false;
+        if (ladyBugP1Indicator != null) ladyBugP1Indicator.enabled = false;
+        if (ladyBugP2Indicator != null) ladyBugP2Indicator.enabled = false;
     }
 
 
