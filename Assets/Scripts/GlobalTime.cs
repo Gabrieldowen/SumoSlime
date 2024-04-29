@@ -14,11 +14,14 @@ public class GlobalTime : MonoBehaviour
     void Start()
     {
         timerSeconds = GetComponent<TextMeshProUGUI>();
+
+        timerSeconds.text = timer.ToString("f1");
     }
     void Update()
     {
         timer -= Time.deltaTime;
         timerSeconds.text = timer.ToString("f1");
+
         if (timer <= 0) {
 
             BugController[] bugControllers = FindObjectsOfType<BugController>();
