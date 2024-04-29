@@ -18,6 +18,7 @@ public class GameSetup : MonoBehaviour
         for (int i = 0; i < GameManager.Instance.selectedCharacters.Length; i++)
         {
             string characterName = GameManager.Instance.selectedCharacters[i];
+            print("getting prefab for " + characterName + "...");
             GameObject prefab = GetPrefabByName(characterName);
 
             // Set the player ID

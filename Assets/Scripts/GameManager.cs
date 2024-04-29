@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
             }
             if (selectedCharacters[1] == null || selectedCharacters[1] == "")
             {
-                selectedCharacters[1] = "RolyPoly"; // Default character
+                selectedCharacters[1] = "LadyBug"; // Default character
             }
             if (string.IsNullOrEmpty(selectedMap))
             {

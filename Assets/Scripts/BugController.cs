@@ -15,7 +15,7 @@ public class BugController : MonoBehaviour
     private Vector3 startPOS;
 
     // Tilemap to be used to spawn blocks
-    private Tilemap tileMap = null;
+    public Tilemap tileMap = null;
 
     // Tile to be used to fill the cells
     public TileBase filledCellTile;
