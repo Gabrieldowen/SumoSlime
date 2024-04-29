@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641228, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   realDungBeetlePrefab: {fileID: 3204763684731336052, guid: 748a960267b2b459986739d966a313f4, type: 3}
   rolliePrefab: {fileID: 8311673153266697166, guid: 457378a3e5e2a4f21833be5847f46d40, type: 3}
-  LadyBugPrefab: {fileID: 723620397285714087, guid: a44967579e4964ab594b3c6e55387b4c, type: 3}
+  ladybug2Prefab: {fileID: 7418929616117617509, guid: b96a8f4b535624443a53399435a85181, type: 3}
 --- !u!4 &537004214
 Transform:
   m_ObjectHideFlags: 0

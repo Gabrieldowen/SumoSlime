@@ -1040,7 +1040,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   realDungBeetlePrefab: {fileID: 3204763684731336052, guid: 748a960267b2b459986739d966a313f4, type: 3}
   rolliePrefab: {fileID: 8311673153266697166, guid: 457378a3e5e2a4f21833be5847f46d40, type: 3}
-  ladybug2Prefab: {fileID: 0}
+  ladybug2Prefab: {fileID: 7418929616117617509, guid: b96a8f4b535624443a53399435a85181, type: 3}
 --- !u!4 &1120607415
 Transform:
   m_ObjectHideFlags: 0
