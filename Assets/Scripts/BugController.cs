@@ -164,6 +164,10 @@ public class BugController : MonoBehaviour
                 tileMap.SetTile(gridPosition, filledCellTile);
                 trailCount++;
             }
+            //if (playerID == 1)
+            //    UIManager.Instance.UpdateGameScore1(trailCount);
+            //else
+            //    UIManager.Instance.UpdateGameScore2(trailCount);
 
         }
     }
