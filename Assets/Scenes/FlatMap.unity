@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641228, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -651,10 +651,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   rotationEase: 0.1
+  tileMap: {fileID: 0}
   filledCellTile: {fileID: 0}
   audioSource: {fileID: 0}
-  trailCountText: {fileID: 0}
-  playerNumber: 1
+  playerID: 0
   platformSize: 0
 --- !u!114 &504283394
 MonoBehaviour:
@@ -818,6 +818,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1303c0ef2bfef44ef81ffa0fb6f80772, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  winnerText: 
 --- !u!114 &720141081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1559,7 +1560,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1606987326}
-  - component: {fileID: 1606987327}
   m_Layer: 5
   m_Name: time
   m_TagString: Untagged
@@ -1587,18 +1587,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1606987327
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1606987325}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1303c0ef2bfef44ef81ffa0fb6f80772, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1883982502
 GameObject:
   m_ObjectHideFlags: 0

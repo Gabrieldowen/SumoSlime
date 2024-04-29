@@ -28,11 +28,6 @@ public class GameSetup : MonoBehaviour
             if (prefab != null && i < startPositions.Length)
             {
                 GameObject characterInstance = Instantiate(prefab, startPositions[i], Quaternion.identity);
-                BugController bugController = characterInstance.GetComponent<BugController>();
-                if (bugController != null)
-                {
-                    bugController.playerNumber = i + 1;  // Assign player number based on order of instantiation
-                }
             }
         }
     }
