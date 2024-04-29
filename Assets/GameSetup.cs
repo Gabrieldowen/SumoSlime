@@ -4,7 +4,7 @@ public class GameSetup : MonoBehaviour
 {
     public GameObject realDungBeetlePrefab;
     public GameObject rolliePrefab;
-    public GameObject LadyBugPrefab;
+    public GameObject ladybug2Prefab;
 
     private Vector3[] startPositions = new Vector3[]
     {
@@ -42,7 +42,7 @@ public class GameSetup : MonoBehaviour
             case "RolyPoly":
                 return rolliePrefab;
             case "LadyBug":
-                return LadyBugPrefab;
+                return ladybug2Prefab;
             default:
                 return null;
         }
