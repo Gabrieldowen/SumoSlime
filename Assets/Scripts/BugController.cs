@@ -52,7 +52,6 @@ public class BugController : MonoBehaviour
         // when you start the game set the startPOS to wherever the players start at
         playerRB = this.GetComponent<Rigidbody>();
         startPOS = playerRB.position;
-        print("start pos is set to: " + startPOS);
         tileMap = GameObject.Find("Tilemap").GetComponent<Tilemap>();
 
     }
@@ -102,7 +101,6 @@ public class BugController : MonoBehaviour
 
         // if the bug hits the water, reset the position & velocity
         if(other.tag == "Water"){
-            print("You hit the water!");
             splashAudioSource.Play();
             resetGameState();
             // here you can reset the trail or update count of falling/deaths
@@ -170,7 +168,6 @@ public class BugController : MonoBehaviour
         }
     }
     public void SaveScore(){
-        print("Player_"+playerID+"_Score: "+trailCount+" saved!");
         PlayerPrefs.SetInt("Player_"+playerID+"_Score", trailCount);
     }
 

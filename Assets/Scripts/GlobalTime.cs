@@ -9,6 +9,7 @@ public class GlobalTime : MonoBehaviour
 {
     private float timer = 10f;
     private TextMeshProUGUI timerSeconds;
+    public string winnerText;
 
 
     void Start()
@@ -35,14 +36,17 @@ public class GlobalTime : MonoBehaviour
             if(player1Score > player2Score)
             {
                 print("Player 1 Wins!: " + player1Score + " - " + player2Score);
+                winnerText = "Player 1 Wins!" + player1Score + " - " + player2Score;
             }
             else if(player2Score > player1Score)
             {
                 print("Player 2 Wins!: "+ player1Score + " - " + player2Score);
+                winnerText = "Player 2 Wins!" + player2Score + " - " + player1Score;
             }
             else
             {
                 print("Tie: " + player1Score + " - " + player2Score);
+                winnerText = "Tie!" + player1Score + " - " + player2Score;
     
             }
             
@@ -51,6 +55,7 @@ public class GlobalTime : MonoBehaviour
         }
 
     }
+
 
 
 }
