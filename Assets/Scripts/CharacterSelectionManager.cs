@@ -28,8 +28,8 @@ public class CharacterSelectionManager : MonoBehaviour
     {
 
         // Initialize default character selections
-        ToggleCharacterSelection("DungBeetle"); // For P1
-        ToggleCharacterSelection("LadyBug");    // For P2
+        //ToggleCharacterSelection("DungBeetle"); // For P1
+        //ToggleCharacterSelection("LadyBug");    // For P2
 
         // Initialize default map selection
         SelectMap("FlatMap");
@@ -37,8 +37,8 @@ public class CharacterSelectionManager : MonoBehaviour
 
         // Hide all indicators initially
         HideAllIndicators();
-        dungBeetleP1Indicator.enabled = true;  //have dungbeetle and ladybug enabled to show they are the two default characters
-        ladyBugP2Indicator.enabled = true;
+        //dungBeetleP1Indicator.enabled = true;  //have dungbeetle and ladybug enabled to show they are the two default characters
+        //ladyBugP2Indicator.enabled = true;
     }
     // This is just for the button visual to know what map is selected
     private void UpdateMapButtonVisual(string mapName, bool isSelected)
