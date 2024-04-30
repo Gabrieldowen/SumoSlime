@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class GlobalTime : MonoBehaviour
 {
-    public float timer = 30f;
+    private float timer = 30f;
     private TextMeshProUGUI timerSeconds;
     public string winnerText;
 
