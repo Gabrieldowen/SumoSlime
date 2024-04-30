@@ -1042,6 +1042,9 @@ MonoBehaviour:
   realDungBeetlePrefab: {fileID: 3204763684731336052, guid: 748a960267b2b459986739d966a313f4, type: 3}
   rolliePrefab: {fileID: 8311673153266697166, guid: 457378a3e5e2a4f21833be5847f46d40, type: 3}
   ladybug2Prefab: {fileID: 7418929616117617509, guid: b96a8f4b535624443a53399435a85181, type: 3}
+  P2_RealDungBeetlePrefab: {fileID: 3204763684731336052, guid: 49bdc6fdf77bf4ef6b1fd78442a6ecbe, type: 3}
+  P2_rolliePrefab: {fileID: 8311673153266697166, guid: a94ac551e97584161b03dff68459c5d3, type: 3}
+  P2_Ladybug2Prefab: {fileID: 7418929616117617509, guid: 4ad4d6cd5262b414f90f63457e0435ea, type: 3}
 --- !u!4 &1120607415
 Transform:
   m_ObjectHideFlags: 0
