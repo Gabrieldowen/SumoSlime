@@ -649,7 +649,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 178550edc44cc45809a0e66a2ed42da2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
   rotationEase: 0.1
   tileMap: {fileID: 0}
   filledCellTile: {fileID: 0}
@@ -818,6 +817,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1303c0ef2bfef44ef81ffa0fb6f80772, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timer: 60
   winnerText: 
 --- !u!114 &720141081
 MonoBehaviour:
@@ -944,7 +944,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.7075472, g: 0.6358707, b: 0.45056072, a: 1}
+  m_Color: {r: 0.57736385, g: 0.4509804, b: 0.7058824, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -1433,7 +1433,7 @@ Transform:
   m_GameObject: {fileID: 1374231166}
   serializedVersion: 2
   m_LocalRotation: {x: 0.46042, y: -0, z: -0, w: 0.8877013}
-  m_LocalPosition: {x: 0, y: 27.1, z: -23.5}
+  m_LocalPosition: {x: 0, y: 16.5, z: -19}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

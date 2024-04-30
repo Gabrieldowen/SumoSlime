@@ -25,14 +25,14 @@ public class UIManager : MonoBehaviour
     {
         Debug.Log("Updating GameScore1: " + score);
         if (gameScore1Text != null)
-            gameScore1Text.text = "Game Score 1: " + score;
+            gameScore1Text.text = "Player 1: \n" + score;
     }
 
     public void UpdateGameScore2(int score)
     {
         Debug.Log("Updating GameScore2: " + score);
         if (gameScore2Text != null)
-            gameScore2Text.text = "Game Score 2: " + score;
+            gameScore2Text.text = "Player 2: \n" + score;
     }
 
 

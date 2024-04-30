@@ -7,7 +7,7 @@ using UnityEngine.Tilemaps;
 
 public class BugController : MonoBehaviour
 {
-    public float speed = 8.0f;
+    private float speed = 12.0f;
     public float rotationEase = 0.1f;
     private Vector2 moveDirection;
 
@@ -61,29 +61,13 @@ public class BugController : MonoBehaviour
 
     }
 
-    // void setPlatformSize(){
-
-    //     Bounds bounds = GameObject.FindGameObjectWithTag("Ground").GetComponent<BoxCollider>().bounds;
-
-
-    //     // Calculate the corners
-    //     Vector3Int topLeft = tileMap.WorldToCell(bounds.center + new Vector3(-bounds.extents.x, bounds.extents.y, bounds.extents.z));
-    //     Vector3Int topRight = tileMap.WorldToCell(bounds.center + new Vector3(bounds.extents.x, bounds.extents.y, bounds.extents.z));
-    //     Vector3Int bottomLeft = tileMap.WorldToCell(bounds.center + new Vector3(-bounds.extents.x, bounds.extents.y, -bounds.extents.z));
-    //     Vector3Int bottomRight = tileMap.WorldToCell(bounds.center + new Vector3(bounds.extents.x, bounds.extents.y, -bounds.extents.z));
-
-    //     int side1 = Mathf.Abs(topLeft.x - topRight.x) + Mathf.Abs(topLeft.y - topRight.y);
-    //     int side2 = Mathf.Abs(bottomLeft.x - bottomRight.x) + Mathf.Abs(bottomLeft.y - bottomRight.y);
-    //     platformSize = side1 * side2;
-
-    // }
-
     // Update is called once per frame
     void Update()
     {
 
         moveBug();
         SpawnSlime();
+        updateTrailCount();
     }
 
 
@@ -178,15 +162,48 @@ public class BugController : MonoBehaviour
             if(tileMap.GetTile(gridPosition) != filledCellTile){
                  // set the tile at the grid position to be the filled cell tile
                 tileMap.SetTile(gridPosition, filledCellTile);
-                trailCount++;
+                updateTrailCount();
+
             }
-            //if (playerID == 1)
-            //    UIManager.Instance.UpdateGameScore1(trailCount);
-            //else
-            //    UIManager.Instance.UpdateGameScore2(trailCount);
+            if (playerID == 1)
+               UIManager.Instance.UpdateGameScore1(trailCount);
+            else
+               UIManager.Instance.UpdateGameScore2(trailCount);
 
         }
     }
+
+    private void updateTrailCount(){
+        BoundsInt bounds = tileMap.cellBounds;
+        TileBase[] allTiles = tileMap.GetTilesBlock(bounds); // Get all tiles within the bounds
+
+        int newTrailCount = 0;
+
+        for (int x = bounds.xMin; x < bounds.xMax; x++)
+        {
+            for (int y = bounds.yMin; y < bounds.yMax; y++)
+            {
+                for (int z = bounds.zMin; z < bounds.zMax; z++)
+                {
+                    Vector3Int cellPosition = new Vector3Int(x, y, z);
+                    TileBase tile = tileMap.GetTile(cellPosition);
+
+                    if (tile == filledCellTile)
+                    {
+                        newTrailCount++;
+                    }
+                }
+            }
+        }
+
+        trailCount = newTrailCount;
+
+        if (playerID == 1)
+            UIManager.Instance.UpdateGameScore1(trailCount);
+        else
+            UIManager.Instance.UpdateGameScore2(trailCount);
+    }
+
     public void SaveScore(){
         PlayerPrefs.SetInt("Player_"+playerID+"_Score", trailCount);
     }
