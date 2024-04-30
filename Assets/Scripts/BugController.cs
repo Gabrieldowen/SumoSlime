@@ -12,6 +12,9 @@ public class BugController : MonoBehaviour
     private Vector2 moveDirection;
 
     private Rigidbody playerRB;
+    // Rollie object for spinning reasons
+    private GameObject rollie;
+    private GameObject rollie2;
     private Vector3 startPOS;
 
     // Tilemap to be used to spawn blocks
@@ -51,6 +54,8 @@ public class BugController : MonoBehaviour
 
         // when you start the game set the startPOS to wherever the players start at
         playerRB = this.GetComponent<Rigidbody>();
+        rollie = GameObject.Find("rolliePrefab(Clone)");
+        rollie2 = GameObject.Find("P2_rolliePrefab(Clone)");
         startPOS = playerRB.position;
         tileMap = GameObject.Find("Tilemap").GetComponent<Tilemap>();
 
@@ -87,8 +92,19 @@ public class BugController : MonoBehaviour
         // moves bug
         Vector3 movement = new Vector3(moveDirection.x, 0.0f, moveDirection.y);
 
+        // Calculate the rolling forward vector (along the X-axis)
+        Vector3 rollingForward = Vector3.right;
+
+        // Rotate the bug around its local X-axis
+        float rollingAngle = 1f; // Adjust the rolling speed as needed
+
         // rotates bug
-        if(moveDirection != Vector2.zero){
+        if(moveDirection != Vector2.zero){      // Determines if there is movement input, do this
+            if(rollie != null && playerRB == rollie.GetComponent<Rigidbody>() || rollie2 != null && playerRB == rollie2.GetComponent<Rigidbody>()){               // Determines if this model is the rollie
+                transform.Rotate(Vector3.right, rollingAngle * (float)6);   // Spin the rollie
+            }
+            
+            // Rotate the character to face the way they are moving
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), rotationEase);
         }
 
