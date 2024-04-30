@@ -73,27 +73,29 @@ public class BugController : MonoBehaviour
 
     // actually moves the bug with rotation
     void moveBug(){
-        // moves bug
-        Vector3 movement = new Vector3(moveDirection.x, 0.0f, moveDirection.y);
+        //if(grounded){
+            // moves bug
+            Vector3 movement = new Vector3(moveDirection.x, 0.0f, moveDirection.y);
 
-        // Calculate the rolling forward vector (along the X-axis)
-        Vector3 rollingForward = Vector3.right;
+            // Calculate the rolling forward vector (along the X-axis)
+            Vector3 rollingForward = Vector3.right;
 
-        // Rotate the bug around its local X-axis
-        float rollingAngle = 1f; // Adjust the rolling speed as needed
+            // Rotate the bug around its local X-axis
+            float rollingAngle = 1f; // Adjust the rolling speed as needed
 
-        // rotates bug
-        if(moveDirection != Vector2.zero){      // Determines if there is movement input, do this
-            if(rollie != null && playerRB == rollie.GetComponent<Rigidbody>() || rollie2 != null && playerRB == rollie2.GetComponent<Rigidbody>()){               // Determines if this model is the rollie
-                transform.Rotate(Vector3.right, rollingAngle * (float)6);   // Spin the rollie
+            // rotates bug
+            if(moveDirection != Vector2.zero){      // Determines if there is movement input, do this
+                if(rollie != null && playerRB == rollie.GetComponent<Rigidbody>() || rollie2 != null && playerRB == rollie2.GetComponent<Rigidbody>()){               // Determines if this model is the rollie
+                    transform.Rotate(Vector3.right, rollingAngle * (float)6);   // Spin the rollie
+                }
+                
+                // Rotate the character to face the way they are moving
+                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), rotationEase);
             }
-            
-            // Rotate the character to face the way they are moving
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), rotationEase);
-        }
 
-        // Transfrom character position based on new information
-        transform.Translate(movement * speed * Time.deltaTime, Space.World);
+            // Transfrom character position based on new information
+            transform.Translate(movement * speed * Time.deltaTime, Space.World);
+       // }
     }
 
     void OnTriggerEnter(Collider other){
@@ -165,10 +167,6 @@ public class BugController : MonoBehaviour
                 updateTrailCount();
 
             }
-            if (playerID == 1)
-               UIManager.Instance.UpdateGameScore1(trailCount);
-            else
-               UIManager.Instance.UpdateGameScore2(trailCount);
 
         }
     }
